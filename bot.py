@@ -110,7 +110,7 @@ async def dm_slash(
                 )
                 return
         await interaction.response.send_message(
-            f"Successfully scheduled {times} message(s) to {user.name} at {scheduled_message.strftime('%Y-%m-%d %H:%M:%S')}."
+            f"Successfully scheduled {times} message(s) to {user.name} at {scheduled_message.strftime('%Y-%m-%d %H:%M:%S')}.",
             ephemeral=True,
         )
 
