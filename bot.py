@@ -54,7 +54,7 @@ CITY = [
     "Aix-en-Provence",
     "Rive de Gier",
     "Saint-Chamond",
-    "Saint-Étienne",
+    "Villeurbanne",
 ]
 
 # Load .env file
