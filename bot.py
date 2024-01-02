@@ -5,6 +5,7 @@ from discord.ext import commands, tasks
 from dotenv import load_dotenv
 import datetime
 
+
 # Load .env file
 load_dotenv()
 intents = discord.Intents.all()
@@ -49,7 +50,7 @@ async def owner_slash(interaction: discord.Interaction):
 scheduled_message = {"user": None, "message": "", "time": ""}
 
 
-@tasks.loop(seconds=60)  # Check every minute
+@tasks.loop(seconds=10)  # Check every 10 seconds
 async def check_time():
     global scheduled_message
     if scheduled_message["user"] is not None:
@@ -57,7 +58,7 @@ async def check_time():
         now = datetime.datetime.now()
         # Get the scheduled date and time
         scheduled_time = datetime.datetime.strptime(
-            scheduled_message["time"], "%Y-%m-%d %H:%M"
+            scheduled_message["time"], "%Y-%m-%d %Hh%M"
         )
         # Check if the current date and time match or are later than the scheduled date and time
         if now >= scheduled_time:
@@ -110,7 +111,7 @@ async def dm_slash(
                 )
                 return
         await interaction.response.send_message(
-            f"Successfully scheduled {times} message(s) to {user.name} at {scheduled_message.strftime('%Y-%m-%d %H:%M:%S')}.",
+            f"Successfully scheduled {times} message(s) to {user.name} at {scheduled_message['time']}.",
             ephemeral=True,
         )
 
