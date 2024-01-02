@@ -24,7 +24,6 @@ def is_owner():
 
 
 @bot.tree.command(
-    guild=discord.Object(id=1190690413598744577),
     name="ping",
     description="Returns the bot's latency",
 )
@@ -35,7 +34,6 @@ async def ping_slash(interaction: discord.Interaction):
 
 
 @bot.tree.command(
-    guild=discord.Object(id=1190690413598744577),
     name="owner",
     description="this command is only for the owner of the server",
 )
@@ -74,7 +72,6 @@ async def check_time():
 
 
 @bot.tree.command(
-    guild=discord.Object(id=1190690413598744577),
     name="dm",
     description="Send a DM to a user",
 )
@@ -117,7 +114,6 @@ async def dm_slash(
 
 
 @bot.tree.command(
-    guild=discord.Object(id=1190690413598744577),
     name="cancel_dm",
     description="Cancel a scheduled DM",
 )
@@ -142,7 +138,7 @@ async def on_ready():
     check_time.start()
 
     try:
-        synced = await bot.tree.sync(guild=discord.Object(id=1190690413598744577))
+        synced = await bot.tree.sync()
         print(f"Synced {len(synced)} commands")
     except Exception as e:
         print(f"Failed to sync commands: {e}")
